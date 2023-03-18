@@ -76,10 +76,11 @@ def createUserVerificationToken(email, action):
 
 # Create your views here.
 
-@authenticated_user
+# @authenticated_user
 def test(request):
 
-    return HttpResponse("<h1> Homepage ! </h1>")
+    return render(request, 'test.html')
+    # return HttpResponse("<h1> Homepage ! </h1>")
 
 
 @csrf_exempt
@@ -106,7 +107,7 @@ def Register(request):
                                     "text" : "Verification email not sent successfully!",
                                 }})
 
-        CustomUser.objects.create_user(email=rd['email'], username=rd['email'], password=rd['password'],
+        CustomUser.objects.create_user(user_type=rd['user_type'], email=rd['email'], username=rd['email'], password=rd['password'],
                                         first_name=rd['fname'], last_name=rd['lname'], mobile_number=rd['phone'], gender=rd['gender'])
 
         return JsonResponse({"success": True,
