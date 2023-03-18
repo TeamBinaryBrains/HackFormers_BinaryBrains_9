@@ -24,7 +24,7 @@ def sendUserVerificationEmail(email, name, action):
     token = createUserVerificationToken(email=email, action=action)
     print(f"token :: {token}")
     domain = "http://127.0.0.1:8000"
-    
+
     if action == "signup":
         url = f"{domain}/account/verify-user/{token}"
 
@@ -76,7 +76,13 @@ def createUserVerificationToken(email, action):
 
 # Create your views here.
 
-# @authenticated_user
+def testing(request):
+
+    return render(request, "Provider/providerHome.html")
+
+
+
+@authenticated_user
 def test(request):
 
     return render(request, 'test.html')
@@ -94,14 +100,14 @@ def Register(request):
         print("rd :: ", rd)
 
         if CustomUser.objects.filter(email=rd['email']).exists():
-            return JsonResponse({"success": False, 
+            return JsonResponse({"success": False,
                                  "message": {
                                     "type" : "warning",
                                     "text" : f"User with email '{rd['email']}' already exists !",
                                 }})
 
         if not sendUserVerificationEmail(rd['email'], rd['fname'], "signup"):
-            return JsonResponse({"success":False, 
+            return JsonResponse({"success":False,
                                  "message": {
                                     "type" : "error",
                                     "text" : "Verification email not sent successfully!",
@@ -135,7 +141,7 @@ def Login(request):
         if user is not None:
 
             if not user.is_verified:
-                return JsonResponse({"success": False, 
+                return JsonResponse({"success": False,
                                      "message": {
                                         "type" : "warning",
                                         "text" : "Email is not verified. Please verify Email and try Again !"
@@ -143,14 +149,14 @@ def Login(request):
 
             auth.login(request, user)
 
-            return JsonResponse({"success": True, 
+            return JsonResponse({"success": True,
                                  "message": {
                                     "type" : "success",
                                     "text": "User login successfully !"
                                 }})
 
         else:
-            return JsonResponse({"success": False, 
+            return JsonResponse({"success": False,
                                  "message": {
                                     "type" : "error",
                                     "text" : "Oppps! Creadentials does not matched !"
@@ -197,7 +203,7 @@ def VerifyUser(request, token):
 
         elif token_obj.action == "forgotPassword":
             token = createUserVerificationToken(email=token_obj.email, action="resetPassword")
-            
+
             return render(request, 'login_register/reset_password.html', {"password_reset_token": token})
 
 
@@ -218,20 +224,20 @@ def ForgotPassword(request):
 
         if user is not None:
             if not sendUserVerificationEmail(email=email, name=user.first_name, action="forgotPassword"):
-                return JsonResponse({"success":False, 
+                return JsonResponse({"success":False,
                                      "message": {
                                         "type" : "error",
                                         "text" : "Password Reset email not sent successfully!",
                                     }})
 
-            return JsonResponse({"success": True, 
+            return JsonResponse({"success": True,
                                  "message": {
                                     "type" : "success",
                                     "text" : "Password reset email sent successfully!",
                                 }})
 
         else:
-            return JsonResponse({"success":False, 
+            return JsonResponse({"success":False,
                                  "message": {
                                     "type" : "error",
                                     "text" : f"User with email '{email}' does not exists !",
