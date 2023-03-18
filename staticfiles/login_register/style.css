@@ -1,0 +1,20 @@
+body {
+    height: 100vh
+}
+.head-color{
+    color: #0B2559;
+}
+
+.utility-color {
+    color: #473764;
+}
+
+.input-box {
+    outline: 1px solid #8D7391!important;
+}
+
+
+.custom-btn {
+    background-color: #473764 !important;
+    border: none !important;
+}
