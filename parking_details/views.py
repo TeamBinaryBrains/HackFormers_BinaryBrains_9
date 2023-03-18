@@ -36,14 +36,17 @@ def ParkingPlaceDetails(request, ):
 
 
 
-def GetParkingPlace(request):
+def BookParkingPlace(request):
 
     if request.method == "POST":
         rd = request.POST
         print("rd :: ", rd)
 
         pp = ParkingPlace.objects.filter(id=rd['pp_id']).first()
-        
+
+        new_parking_track = ParkingTrack.objects.create(user=request.user, parking_place=pp, start_time=rd['start_time'], rate_per_hr=pp.rate_per_hr,
+                                                        approx_duration=rd['ad'], vehicle_type=rd['vt'], vehicle_no=rd['vn'], state="requested")
+
 
     return render(request, '')
 

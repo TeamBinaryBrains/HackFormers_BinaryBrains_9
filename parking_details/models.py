@@ -35,6 +35,7 @@ class ParkingTrack(models.Model):
     vehicle_no = models.CharField(max_length=16, blank=True, null=True)
     # state => requested | accepted | rejected 
     state = models.CharField(max_length=16, blank=True, null=True)
+    verify_otp = models.CharField(max_length=8, blank=True, null=True)
 
     # timestamps
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)

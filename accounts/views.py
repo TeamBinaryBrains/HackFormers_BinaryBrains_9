@@ -78,15 +78,21 @@ def createUserVerificationToken(email, action):
 
 def testing(request):
 
-    return render(request, "Provider/providerHome.html")
+    return render(request, "provider/providerHome.html")
 
 
 
 @authenticated_user
-def test(request):
+def homepage(request):
+
+    if request.user.user_type == "user":
+        return HttpResponse("<h1> Homepage For User ! </h1>")
+
+    elif request.user.user_type == "provider":
+        return render(request, 'provider/providerHome.html')
 
     return render(request, 'test.html')
-    # return HttpResponse("<h1> Homepage ! </h1>")
+
 
 
 @csrf_exempt

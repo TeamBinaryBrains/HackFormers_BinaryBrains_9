@@ -9,6 +9,7 @@ $(document).ready(function (event) {
     event.preventDefault();
 
     var fdata = {
+      "user_type": $("#user_type").val(),
       "fname": $("#fname").val(),
       "lname": $("#lname").val(),
       "phone": $("#phone").val(),
