@@ -6,7 +6,6 @@ from django.conf import settings
 from django.contrib.auth.models import auth
 from django.db import transaction
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required
 from datetime import timedelta, datetime
 
 import random

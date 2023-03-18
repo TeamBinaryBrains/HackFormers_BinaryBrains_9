@@ -15,6 +15,7 @@ class ParkingPlace(models.Model):
     rate_per_hr = models.IntegerField(default=30)
     is_active = models.BooleanField(default=True)
     in_use = models.BooleanField(default=False)
+    place_images = ArrayField(models.CharField(max_length=256, blank=True, null=True), size=8, blank=True, null=True)
 
     # timestamps
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
@@ -41,6 +42,7 @@ class ParkingTrack(models.Model):
     # timestamps
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     updated_at = models.DateTimeField(auto_now=True, blank=True, null=True)
+
 
 
 

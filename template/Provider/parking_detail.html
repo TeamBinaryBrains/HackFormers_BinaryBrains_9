@@ -18,37 +18,37 @@
         <!-- ? LEFT SIDE -->
         <div class="left container-fluid">
           <div class="profile m-2 my-4 rounded-4 d-flex flex-column px-4 py-3">
-            <img class="m-auto" src="profile.png" alt="profile-pic" />
+            <img class="m-auto" src="/static/assets/profile.png" alt="profile-pic" />
             <div class="container d-flex align-items-center">
-              <p class="m-auto lead">John Grave</p>
+              <p class="m-auto lead">{{request.user.first_name}} {{request.user.last_name}}</p>
               <a href="#">
-                <img class="icons" src="Edit.png" alt="edit" />
+                <img class="icons" src="/static/assets/Edit.png" alt="edit" />
               </a>
             </div>
           </div>
           <div class="main-wrapper d-flex flex-column justify-content-between bg-y">
             <div class="container-wrapper">
               <div class="container my-5">
-                <img src="home_light.png" alt="icons" class="icons" />
-                <a class="text-decoration-none text-secondary fs-5" href="#">Home</a>
+                <img src="/static/assets/home_light.png" alt="icons" class="icons" />
+                <a class="text-decoration-none text-secondary fs-5" href="/">Home</a>
               </div>
               <div class="container my-5">
-                <img src="edit.png" alt="icons" class="icons" />
-                <a class="text-decoration-none text-dark fs-5" href="#">Parking Details</a>
+                <img src="/static/assets/edit.png" alt="icons" class="icons" />
+                <a class="text-decoration-none text-dark fs-5" href="/parking/details">Parking Details</a>
               </div>
               <div class="container my-5">
-                <img src="white_edit.png" alt="icons" class="icons" />
+                <img src="/static/assets/white_edit.png" alt="icons" class="icons" />
                 <a class="text-decoration-none text-secondary fs-5" href="#">Payment</a>
               </div>
               <div class="container my-5">
-                <img src="Settings.png" alt="icons" class="icons" />
+                <img src="/static/assets/Settings.png" alt="icons" class="icons" />
                 <a class="text-decoration-none text-secondary fs-5" href="#">Settings</a>
               </div>
             </div>
 
             <div class="container">
-              <img src="logout.png" alt="icons" class="icons" />
-              <a class="text-decoration-none text-secondary fs-5" href="#">Logout</a>
+              <img src="/static/assets/logout.png" alt="icons" class="icons" />
+              <a class="text-decoration-none text-secondary fs-5" href="/account/logout">Logout</a>
             </div>
           </div>
         </div>
@@ -59,24 +59,27 @@
 
         <!-- ? Title -->
         <div class="">
-          <p class="lead para">Hey John,</p>
+          <p class="lead para">Hey {{request.user.first_name}},</p>
           <h2 class="h2 display-5">Good Morning</h2>
         </div>
 
+        {% if pp %}
         <main>
             <div class="custom-m container-fluid d-flex justify-content-between align-items-center">
                 <h3 class="h3 display-8">Parking Slots</h3>
                 <button class="btn btn-gray rounded-4 px-4">Add New</button>
             </div>
+
+            {% for p in pp %}
             <div class="slot rounded-4 p-4 mt-2">
                 <div class="container d-flex align-items-center justify-content-between">
                     <div class="leftside d-flex align-items-center justify-content-center">
-                        <h2 class="h3 display-8">Parking Slot 1</h2>
-                        <a  href="#">
-                            <img class="icons mb-2" src="Edit.png" alt="edit" />
-                         </a>
-                        <a  href="#">
-                            <img class="icons mb-2" src="thrash.png" alt="">
+                        <h2 class="h3 display-8">{{p.title}}</h2>
+                        <a href="/parking/details/modify/{{p.id}}/edit">
+                            <img class="icons mb-2" src="/static/assets/Edit.png" alt="edit" />
+                        </a>
+                        <a href="/parking/details/modify/{{p.id}}/delete">
+                          <img class="icons mb-2" src="/static/assets/thrash.png" alt="">
                         </a>
                     </div>
                     <div class="rightside d-flex justify-content-center">
@@ -88,23 +91,30 @@
                     </div>
                 </div>
                 <div class="imgs d-flex align-items-center mt-2">
-                    <img class="m-1" src="/parking_space1.png" alt="parking space 1">
-                    <img class="m-1" src="/parking_space2.png" alt="parking space 1">
+
+                    {% for img in p.place_images %}
+                    <img class="m-1 rounded" src="{{img}}" height="120px" width="200px" alt="parking space 1">
+                    {% endfor %}
+                    <!--
+                    <img class="m-1" src="/static/assets//parking_space2.png" alt="parking space 1">
                     <div class="add-img rounded-4 flex-column d-flex justify-content-center align-items-center">
-                        <img src="add.png" alt="">
+                        <img src="/static/assets/add.png" alt="">
                         <p>Add Image</p>
-                    </div>
+                    </div> 
+                    -->
                 </div>
             </div>
-            <div class="slot rounded-4 p-4 mt-2">
+            {% endfor %}
+          
+            <!-- <div class="slot rounded-4 p-4 mt-2">
                 <div class="container d-flex align-items-center justify-content-between">
                     <div class="leftside d-flex align-items-center justify-content-center">
                         <h2 class="h3 display-8">Parking Slot 1</h2>
                         <a  href="#">
-                            <img class="icons mb-2" src="Edit.png" alt="edit" />
+                            <img class="icons mb-2" src="/static/assets/Edit.png" alt="edit" />
                          </a>
                         <a  href="#">
-                            <img class="icons mb-2" src="thrash.png" alt="">
+                            <img class="icons mb-2" src="/static/assets/thrash.png" alt="">
                         </a>
                     </div>
                     <div class="rightside d-flex justify-content-center">
@@ -116,15 +126,21 @@
                     </div>
                 </div>
                 <div class="imgs d-flex align-items-center mt-2">
-                    <img class="m-1" src="/parking_space1.png" alt="parking space 1">
-                    <img class="m-1" src="/parking_space2.png" alt="parking space 1">
+                    <img class="m-1" src="/static/assets//parking_space1.png" alt="parking space 1">
+                    <img class="m-1" src="/static/assets//parking_space2.png" alt="parking space 1">
                     <div class="add-img rounded-4 flex-column d-flex justify-content-center align-items-center">
-                        <img src="add.png" alt="">
+                        <img src="/static/assets/add.png" alt="">
                         <p>Add Image</p>
                     </div>
                 </div>
-            </div>
+            </div> -->
+
         </main>
+        {% else %}
+        <h3>No Parking place added yet !</h3>
+        {% endif %}
+
+
           </div>
         </div>
 
@@ -141,7 +157,7 @@
     crossorigin="anonymous"></script>
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-  <script src="/static/script.js"></script>
+  <script src="/static/provider/script.js"></script>
 </body>
 
 </html>
