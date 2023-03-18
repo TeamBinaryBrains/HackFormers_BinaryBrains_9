@@ -14,7 +14,7 @@ class ParkingPlace(models.Model):
     pincode = models.CharField(max_length=8, blank=True, null=True)
     rate_per_hr = models.IntegerField(default=30)
     is_active = models.BooleanField(default=True)
-    is_available = models.BooleanField(default=True)
+    in_use = models.BooleanField(default=False)
 
     # timestamps
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
@@ -30,10 +30,11 @@ class ParkingTrack(models.Model):
     rate_per_hr = models.IntegerField(default=0)
     approx_duration = models.IntegerField(default=0)
     final_duration = models.IntegerField(default=0)
-    is_exited = models.BooleanField(default=False)
+    is_exited_by_user = models.BooleanField(default=False)
+    is_exited_by_provider = models.BooleanField(default=False)
     vehicle_type = models.CharField(max_length=32, blank=True, null=True)
     vehicle_no = models.CharField(max_length=16, blank=True, null=True)
-    # state => requested | accepted | rejected 
+    # state => requested | accepted | rejected | parked | exited
     state = models.CharField(max_length=16, blank=True, null=True)
     verify_otp = models.CharField(max_length=8, blank=True, null=True)
 

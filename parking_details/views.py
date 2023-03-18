@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 
 from parking_details.models import *
@@ -49,5 +49,25 @@ def BookParkingPlace(request):
 
 
     return render(request, '')
+
+
+def SetRequestedParkingPlaceState(request, rpp_id, state):
+
+    if request.method == "POST":
+        ParkingTrack.objects.filter(parking_place__provider=request.user, id=rpp_id, state="requested").update(state=state)
+
+    return redirect("/")
+
+
+def VerifyAcceptedSlot(request, app_id):
+
+    if request.method == "POST":
+        app_obj = ParkingTrack.objects.filter(parking_place__provider=request.user, id=app_id, state="accepted").first()
+        
+        if request.POST['verify_otp'] == app_obj.verify_otp:
+            app_obj.state = "parked"
+            app_obj.save()
+
+    return redirect("/")
 
 

@@ -14,6 +14,8 @@ import uuid
 
 from accounts.models import *
 from accounts.access_decorator import *
+from parking_details.models import *
+
 
 
 # global functions here
@@ -89,7 +91,21 @@ def homepage(request):
         return HttpResponse("<h1> Homepage For User ! </h1>")
 
     elif request.user.user_type == "provider":
-        return render(request, 'provider/providerHome.html')
+
+        # pp => parking_place | rpp => requested_parking_place | app =>     
+        pp = ParkingTrack.objects.filter(parking_place__provider=request.user, state="parked")
+        rpp = ParkingTrack.objects.filter(parking_place__provider=request.user, state="requested")
+        app = ParkingTrack.objects.filter(parking_place__provider=request.user, state="accepted")
+
+        print("rpp len :: ", len(rpp))
+
+        data = {
+            "pp": pp,
+            "rpp": rpp,
+            "app": app,
+        }
+
+        return render(request, 'provider/providerHome.html', data)
 
     return render(request, 'test.html')
 
