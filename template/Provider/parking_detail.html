@@ -80,9 +80,9 @@
                         </a>
                     </div>
                     <div class="rightside d-flex justify-content-center">
-                        <p class="text-success my-auto mx-3">Active</p>
+                        <p id="status" class="my-auto mx-3">OFF</p>
                         <label class="switch">
-                            <input type="checkbox">
+                            <input id="checkbox" type="checkbox">
                             <span class="slider round"></span>
                           </label>
                     </div>
@@ -108,9 +108,9 @@
                         </a>
                     </div>
                     <div class="rightside d-flex justify-content-center">
-                        <p class="text-success my-auto mx-3">Active</p>
+                        <p id="status2" class=" my-auto mx-3">OFF</p>
                         <label class="switch">
-                            <input type="checkbox">
+                            <input id="checkbox2" type="checkbox">
                             <span class="slider round"></span>
                           </label>
                     </div>
@@ -142,6 +142,26 @@
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   <script src="/static/script.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      $("#checkbox").change(function() {
+        if ($(this).is(":checked")) {
+          $("#status").text("Active").css("color", "green");
+        } else {
+          $("#status").text("Inactive").css("color", "red");
+        }
+      });
+
+      $("#checkbox2").change(function() {
+        if ($(this).is(":checked")) {
+          $("#status2").text("Active").css("color", "green");
+        } else {
+          $("#status2").text("Inactive").css("color", "red");
+        }
+      });
+    });
+      </script>
 </body>
 
 </html>
