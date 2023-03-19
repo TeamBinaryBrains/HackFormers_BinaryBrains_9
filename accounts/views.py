@@ -29,7 +29,7 @@ def sendUserVerificationEmail(email, name, action):
     if action == "signup":
         url = f"{domain}/account/verify-user/{token}"
 
-        subject = f"Welcome to CompanyName {name} !"
+        subject = f"Welcome to ParkMate {name} !"
         msg = f"Hey {name} ! \nComplete your signup process by activating your account."
         html_message = render_to_string('mail_template/signup.html', {"check_url": url})
 
