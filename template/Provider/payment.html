@@ -7,39 +7,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="/static/style.css" />
   <title>Payment</title>
 </head>
 
 <body>
-
   <div class=" container-fluid">
     <div class="row vh-100">
       <div class="main-left col-2">
         <!-- ? LEFT SIDE -->
         <div class="left container-fluid">
           <div class="profile m-2 my-4 rounded-4 d-flex flex-column px-4 py-3">
-            <img class="m-auto" src="/staticfiles/assets/profile.png" alt="profile-pic" />
+            <img class="m-auto" src="profile.png" alt="profile-pic" />
             <div class="container d-flex align-items-center">
               <p class="m-auto lead">John Grave</p>
               <a href="#">
-                <img class="icons" src="/staticfiles/assets/edit.png" alt="edit" />
+                <img class="icons" src="Edit.png" alt="edit" />
               </a>
             </div>
           </div>
           <div class="main-wrapper d-flex flex-column justify-content-between bg-y">
             <div class="container-wrapper">
               <div class="container my-5">
-                <img src="/staticfiles/assets/home" alt="icons" class="icons" />
+                <img src="home_light.png" alt="icons" class="icons" />
                 <a class="text-decoration-none text-secondary fs-5" href="#">Home</a>
               </div>
               <div class="container my-5">
-                <img src="/staticfiles/assets/edit.png" alt="icons" class="icons" />
-                <a class="text-decoration-none text-dark fs-5" href="#">Parking Details</a>
+                <img src="white_edit.png" alt="icons" class="icons" />
+                <a class="text-decoration-none text-secondary fs-5" href="#">Parking Details</a>
               </div>
               <div class="container my-5">
-                <img src="white_edit.png" alt="icons" class="icons" />
-                <a class="text-decoration-none text-secondary fs-5" href="#">Payment</a>
+                <img src="payment_dark.png" alt="icons" class="icons" />
+                <a class="text-decoration-none text-dark fs-5" href="#">Payment</a>
               </div>
               <div class="container my-5">
                 <img src="Settings.png" alt="icons" class="icons" />
@@ -65,103 +64,70 @@
         </div>
 
         <main>
-            <div class="custom-m container-fluid d-flex justify-content-between align-items-center">
-                <h3 class="h3 display-8">Parking Slots</h3>
-                <button class="btn btn-gray rounded-4 px-4">Add New</button>
+          <div class="row d-flex">
+            <div class="col col-6 bg-custom m-2 rounded-4 p-4">
+              <p>Card details</p>
+              <h3>Siddhiraj Kolwankar</h3>
+              <p>09/27</p>
+              <h5>XXXX XXXX XXXX 2468</h5>
             </div>
-            <div class="slot rounded-4 p-4 mt-2">
-                <div class="container d-flex align-items-center justify-content-between">
-                    <div class="leftside d-flex align-items-center justify-content-center">
-                        <h2 class="h3 display-8">Parking Slot 1</h2>
-                        <a  href="#">
-                            <img class="icons mb-2" src="Edit.png" alt="edit" />
-                         </a>
-                        <a  href="#">
-                            <img class="icons mb-2" src="thrash.png" alt="">
-                        </a>
-                    </div>
-                    <div class="rightside d-flex justify-content-center">
-                        <p id="status" class=" my-auto mx-3">OFF</p>
-                        <label class="switch">
-                            <input id="checkbox" type="checkbox">
-                            <span class="slider round"></span>
-                          </label>
-                    </div>
-                </div>
-                <div class="imgs d-flex align-items-center mt-2">
-                    <img class="m-1" src="/parking_space1.png" alt="parking space 1">
-                    <img class="m-1" src="/parking_space2.png" alt="parking space 1">
-                    <div class="add-img rounded-4 flex-column d-flex justify-content-center align-items-center">
-                        <img src="add.png" alt="">
-                        <p>Add Image</p>
-                    </div>
-                </div>
+            <div class="col col-4 bg-custom m-2 rounded-4 p-4">
+              <p>Your Wallet Balance</p>
+              <div class="wrapper d-flex align-items-center">
+                <img class="icons mx-2" src="Rupee.png" alt="">
+                <h3>2000.50</h3>
+              </div>
             </div>
-            <div class="slot rounded-4 p-4 mt-2">
-                <div class="container d-flex align-items-center justify-content-between">
-                    <div class="leftside d-flex align-items-center justify-content-center">
-                        <h2 class="h3 display-8">Parking Slot 1</h2>
-                        <a  href="#">
-                            <img class="icons mb-2" src="Edit.png" alt="edit" />
-                         </a>
-                        <a  href="#">
-                            <img class="icons mb-2" src="thrash.png" alt="">
-                        </a>
-                    </div>
-                    <div class="rightside d-flex justify-content-center">
-                        <p id="status2" class=" my-auto mx-3">OFF</p>
-                        <label class="switch">
-                            <input id="checkbox2" type="checkbox">
-                            <span class="slider round"></span>
-                          </label>
-                    </div>
+            <p class="lead para my-3">History</p>
+            <div class="">
+              <div class="bg-custom p-3 rounded-4 mb-3">
+                <div class="top d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <img style="height: 55px; width: 55px;" src="Rupee.png" alt="">
+                    <p class="mt-3">1000</p>
+                  </div>
+                  <div class="date">
+                    <p>
+                      Date: 19-03-2023
+                    </p>
+                  </div>
                 </div>
-                <div class="imgs d-flex align-items-center mt-2">
-                    <img class="m-1" src="/parking_space1.png" alt="parking space 1">
-                    <img class="m-1" src="/parking_space2.png" alt="parking space 1">
-                    <div class="add-img rounded-4 flex-column d-flex justify-content-center align-items-center">
-                        <img src="add.png" alt="">
-                        <p>Add Image</p>
-                    </div>
+                <div class="bottom d-flex justify-content-between mt-2">
+                  <p>From: Siddhiraj Kolwankar</p>
+                  <img style="height: 35px; width: 35px;" src="download.png" alt="">
                 </div>
+              </div>
+              <div class="bg-custom p-3 rounded-4">
+                <div class="top d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <img style="height: 55px; width: 55px;" src="Rupee.png" alt="">
+                    <p class="mt-3">1000</p>
+                  </div>
+                  <div class="date">
+                    <p>
+                      Date: 19-03-2023
+                    </p>
+                  </div>
+                </div>
+                <div class="bottom d-flex justify-content-between mt-2">
+                  <p>From: Siddhiraj Kolwankar</p>
+                  <img style="height: 35px; width: 35px;" src="download.png" alt="">
+                </div>
+              </div>
             </div>
-        </main>
           </div>
-        </div>
 
+        </main>
       </div>
     </div>
-
-  </div>
-  </div>
-  </div>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-  integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
-  <script src="https://code.jquery.com/jquery-3.6.3.min.js"
-    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-  <script src="/static/script.js"></script>
-  <script>
-$(document).ready(function() {
-  $("#checkbox").change(function() {
-    if ($(this).is(":checked")) {
-      $("#status").text("Active").css("color", "green");
-    } else {
-      $("#status").text("Inactive").css("color", "red");
-    }
-  });
-
-  $("#checkbox2").change(function() {
-    if ($(this).is(":checked")) {
-      $("#status2").text("Active").css("color", "green");
-    } else {
-      $("#status2").text("Inactive").css("color", "red");
-    }
-  });
-});
-  </script>
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+      <script src="/static/script.js"></script>
 </body>
 
 </html>
