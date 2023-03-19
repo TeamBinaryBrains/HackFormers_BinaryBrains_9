@@ -14,8 +14,14 @@ def AddParkingPlace(request):
         rd = request.POST
         print("rd :: ", rd)
 
+        url_list = [
+            "http://127.0.0.1:8000/media/parking_places/image/209307f3ef8f4544ae5f09bbce876591.jpeg",
+            "http://127.0.0.1:8000/media/parking_places/image/ac667c4cd2954905ba3072de6c7dbde7.jpeg",
+            "http://127.0.0.1:8000/media/parking_places/image/81d420bbf0b14394b88c62fe81022c48.jpeg",
+        ]
+
         ParkingPlace.objects.create(provider=request.user, title=rd['title'], address_line_1=rd['adl1'], address_line_2=rd['adl2'],
-                                    city=rd['city'], state=rd['state'], pincode=rd['pincode'], rate_per_hr=rd['rph'])
+                                    city=rd['city'], state=rd['state'], pincode=rd['pincode'], rate_per_hr=rd['rph'], place_images=url_list)
 
         parking_places = ParkingPlace.objects.filter(provider=request.user)
 
