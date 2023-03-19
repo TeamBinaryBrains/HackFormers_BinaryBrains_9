@@ -1,6 +1,7 @@
 import random
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.db.models import Q
 from datetime import datetime
 from parking_details.models import *
 
@@ -105,11 +106,32 @@ def ConfirmBooking(request, pp_id):
                                     approx_duration=rd['ad'], vehicle_type=rd['vt'], vehicle_no=rd['vn'], state="requested",
                                     verify_otp=verify_otp)
         
-        return HttpResponse(f"Your Booking successful! OTP :: {verify_otp}")
-        # return render(request, 'user/')
+        pp.in_use = True
+        pp.save()
+        
+        # return HttpResponse(f"Your Booking successful! OTP :: {verify_otp}")
+        return render(request, 'user/otp.html', {"verify_otp":verify_otp})
 
     return redirect("/")
 
+
+
+def GetParkingByFilter(request):
+
+    if request.method == "POST":
+        rd = request.POST
+        print("rd :: ", rd)
+
+        fpp = ParkingPlace.objects.filter((Q(address_line_1__icontains=rd['street']) | Q(address_line_2__icontains=rd['street'])), state=rd['state'], city=rd['city'])
+        
+        print("\nfpp :: ", fpp)
+        data = {
+            "pp": fpp,
+        }
+
+        return render(request, 'user/homepage.html', data)
+
+    return redirect("/")
 
 
 

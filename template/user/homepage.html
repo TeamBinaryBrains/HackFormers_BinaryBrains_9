@@ -64,27 +64,36 @@
 
 
 
-                        <form class=" w-80 row g-3">
+                        <form action="/parking/get_parking/filter" method="POST" class=" w-80 row g-3">
+                            
+                            {% csrf_token %}
+
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control input-box" />
-                                    <label class="form-label">Enter State and city</label>
+                                    <input type="text" id="state" name="state" class="form-control input-box" />
+                                    <label class="form-label">Enter State </label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control input-box" />
+                                    <input type="text" id="city" name="city" class="form-control input-box" />
+                                    <label class="form-label">Enter City</label>
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" id="vt" name="vt" class="form-control input-box" />
                                     <label class="form-label">Enter Vehicle type</label>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control input-box" />
-                                    <label class="form-label">Email address</label>
+                                    <input type="text" id="street" name="street" class="form-control input-box" />
+                                    <label class="form-label">Search street</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <button type="button" id="signup_proceed_btn" class="btn btn-dark px-4 py-3 custom-btn">
+                                <button type="submit" id="signup_proceed_btn" class="btn btn-dark px-4 py-3 custom-btn">
                                     Search
                                 </button>
                             </div>
