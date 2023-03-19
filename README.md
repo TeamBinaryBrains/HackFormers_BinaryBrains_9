@@ -47,10 +47,10 @@ Before installation, please make sure you have already installed the following t
 
 ## 🛠️ Installation
 
-1. Clone Mingle
+1. Clone ParkMate
 
 bash
-  git clone https://github.com/Team-ByteCodes/ByteCodes_Clash-of-Codes.git
+  git clone https://github.com/TeamBinaryBrains/HackFormers_BinaryBrains_9.git
 
 
 2. Move into the project
