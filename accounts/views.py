@@ -14,7 +14,7 @@ import uuid
 from accounts.models import *
 from accounts.access_decorator import *
 from parking_details.models import *
-
+from payment.views import createStripeCustomer
 
 
 # global functions here
@@ -135,8 +135,18 @@ def Register(request):
                                     "text" : "Verification email not sent successfully!",
                                 }})
 
+        status, customer = createStripeCustomer(request.user)
+        if not status:
+            return JsonResponse({"success":False,
+                                 "message": {
+                                    "type" : "error",
+                                    "text" : customer,
+                                }})
+
+
         CustomUser.objects.create_user(user_type=rd['user_type'], email=rd['email'], username=rd['email'], password=rd['password'],
-                                        first_name=rd['fname'], last_name=rd['lname'], mobile_number=rd['phone'], gender=rd['gender'])
+                                        first_name=rd['fname'], last_name=rd['lname'], mobile_number=rd['phone'], gender=rd['gender'],
+                                        stripe_customer_response=customer, stripe_customer_id=customer.id)
 
         return JsonResponse({"success": True,
                              "message": {

@@ -64,8 +64,8 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     email_verified_at = models.DateTimeField(blank=True, null=True)
 
     # payment gateway fields
-    stripe_customer_id = models.CharField(max_length=100, blank=True, null=True)
-    stripe_customer_response = models.JSONField(max_length=1000, blank=True, null=True)
+    stripe_customer_id = models.CharField(max_length=64, blank=True, null=True)
+    stripe_customer_response = models.JSONField(max_length=1024, blank=True, null=True)
 
     # timestamps
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
