@@ -12,124 +12,159 @@
 </head>
 
 <body>
+
     <div class=" container-fluid">
-        <div class="row custom-h">
-
-            <nav class="navbar navbar-light">
-                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Edit Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Track Current Parking</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Past Booking</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Setting</a>
-                        </li>
-
-                    </ul>
-
-                </div>
-            </nav>
-
-            <form class=" w-80 row g-3">
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control input-box" />
-                        <label class="form-label">Enter State and city</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control input-box" />
-                        <label class="form-label">Enter Vehicle type</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control input-box" />
-                        <label class="form-label">Email address</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <button type="button" id="signup_proceed_btn" class="btn btn-dark px-4 py-3 custom-btn">
-                        Create Account
-                    </button>
-                </div>
-            </form>
-
-            <div class="mt-5">
-                <h3 class=" display-7">Recommended Slot</h3>
-            </div>
-
-            <main>
-                <div class="slot rounded-4 p-4 mt-2">
-                    <div class="mb-3">
-                        <div class="leftside d-flex align-items-center">
-                            <img class="custom-img mb-1" src="profile.png" alt="edit" />
-                            <p class="mx-2">John Grave</p>
+        <div class="row vh-100">
+            <div class="main-left col-2">
+                <!-- ? LEFT SIDE -->
+                <div class="left container-fluid">
+                    <div class="profile m-2 my-4 rounded-4 d-flex flex-column px-4 py-3">
+                        <img class="m-auto" src="profile.png" alt="profile-pic" />
+                        <div class="container d-flex align-items-center">
+                            <p class="m-auto lead">John Grave</p>
+                            <a href="#">
+                                <img class="icons" src="Edit.png" alt="edit" />
+                            </a>
                         </div>
                     </div>
-                    <div class="imgs d-flex align-items-center mt-2">
-                        <img class="m-1" src="/parking_space1.png" alt="parking space 1">
-                        <img class="m-1" src="/parking_space2.png" alt="parking space 1">
-                        <img class="m-1" src="/parking_space2.png" alt="parking space 1">
-                        <div class="content m-5">
-                            <p class="p-0 m-0"><b>Address: </b></p>
-                            <p class="p-0">Street, 209, 50th Cross Rd, 3 Block, Rajajinagar Bangalore, Karnataka, 53080
-                            </p>
+                    <div class="main-wrapper d-flex flex-column justify-content-between bg-y">
+                        <div class="container-wrapper">
+                            <div class="container my-5">
+                                <img src="home_light.png" alt="icons" class="icons" />
+                                <a class="text-decoration-none text-secondary fs-5" href="#">Home</a>
+                            </div>
+                            <div class="container my-5">
+                                <img src="edit.png" alt="icons" class="icons" />
+                                <a class="text-decoration-none text-dark fs-5" href="#">Parking Details</a>
+                            </div>
+                            <div class="container my-5">
+                                <img src="white_edit.png" alt="icons" class="icons" />
+                                <a class="text-decoration-none text-secondary fs-5" href="#">Payment</a>
+                            </div>
+                            <div class="container my-5">
+                                <img src="Settings.png" alt="icons" class="icons" />
+                                <a class="text-decoration-none text-secondary fs-5" href="#">Settings</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="bottom d-flex justify-content-between">
-                        <div class="lefti d-flex align-items-center">
-                            <img src="Rupee.png" alt="" class="icons mb-3">
-                            <p class="lead">100/hr</p>
+
+                        <div class="container">
+                            <img src="logout.png" alt="icons" class="icons" />
+                            <a class="text-decoration-none text-secondary fs-5" href="#">Logout</a>
                         </div>
-                        <div class="right">
-                            <button class="btn btn-dark rounded-3xl">Book Now</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="slot rounded-4 p-4 mt-2">
-                <div class="mb-3">
-                    <div class="leftside d-flex align-items-center">
-                        <img class="custom-img mb-1" src="profile.png" alt="edit" />
-                        <p class="mx-2">John Grave</p>
-                    </div>
-                </div>
-                <div class="imgs d-flex align-items-center mt-2">
-                    <img class="m-1" src="/parking_space1.png" alt="parking space 1">
-                    <img class="m-1" src="/parking_space2.png" alt="parking space 1">
-                    <img class="m-1" src="/parking_space2.png" alt="parking space 1">
-                    <div class="content m-5">
-                        <p class="p-0 m-0"><b>Address: </b></p>
-                        <p class="p-0">Street, 209, 50th Cross Rd, 3 Block, Rajajinagar Bangalore, Karnataka, 53080
-                        </p>
-                    </div>
-                </div>
-                <div class="bottom d-flex justify-content-between">
-                    <div class="lefti d-flex align-items-center">
-                        <img src="Rupee.png" alt="" class="icons mb-3">
-                        <p class="lead">100/hr</p>
-                    </div>
-                    <div class="right">
-                        <button class="btn btn-dark rounded-3xl">Book Now</button>
                     </div>
                 </div>
             </div>
-            </main>
+            <!-- ? LEFT END-->
+
+            <div class="col-10 container px-4 py-5">
+
+                <!-- ? Title -->
+                <div class=" container-fluid">
+                    <div class="row custom-h">
+
+
+
+                        <form class=" w-80 row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control input-box" />
+                                    <label class="form-label">Enter State and city</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control input-box" />
+                                    <label class="form-label">Enter Vehicle type</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control input-box" />
+                                    <label class="form-label">Email address</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="button" id="signup_proceed_btn" class="btn btn-dark px-4 py-3 custom-btn">
+                                    Create Account
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="mt-5">
+                            <h3 class=" display-7">Recommended Slot</h3>
+                        </div>
+
+                        <main>
+                            <div class="slot rounded-4 p-4 mt-2">
+                                <div class="mb-3">
+                                    <div class="leftside d-flex align-items-center">
+                                        <img class="custom-img mb-1" src="profile.png" alt="edit" />
+                                        <p class="mx-2">John Grave</p>
+                                    </div>
+                                </div>
+                                <div class="imgs d-flex align-items-center mt-2">
+                                    <img class="m-1" src="/parking_space1.png" alt="parking space 1">
+                                    <img class="m-1" src="/parking_space2.png" alt="parking space 1">
+                                    <img class="m-1" src="/parking_space2.png" alt="parking space 1">
+                                    <div class="content m-5">
+                                        <p class="p-0 m-0"><b>Address: </b></p>
+                                        <p class="p-0">Street, 209, 50th Cross Rd, 3 Block, Rajajinagar Bangalore, Karnataka, 53080
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="bottom d-flex justify-content-between">
+                                    <div class="lefti d-flex align-items-center">
+                                        <img src="Rupee.png" alt="" class="icons mb-3">
+                                        <p class="lead">100/hr</p>
+                                    </div>
+                                    <div class="right">
+                                        <button class="btn btn-dark rounded-3xl">Book Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slot rounded-4 p-4 mt-2">
+                                <div class="mb-3">
+                                    <div class="leftside d-flex align-items-center">
+                                        <img class="custom-img mb-1" src="profile.png" alt="edit" />
+                                        <p class="mx-2">John Grave</p>
+                                    </div>
+                                </div>
+                                <div class="imgs d-flex align-items-center mt-2">
+                                    <img class="m-1" src="/parking_space1.png" alt="parking space 1">
+                                    <img class="m-1" src="/parking_space2.png" alt="parking space 1">
+                                    <img class="m-1" src="/parking_space2.png" alt="parking space 1">
+                                    <div class="content m-5">
+                                        <p class="p-0 m-0"><b>Address: </b></p>
+                                        <p class="p-0">Street, 209, 50th Cross Rd, 3 Block, Rajajinagar Bangalore, Karnataka, 53080
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="bottom d-flex justify-content-between">
+                                    <div class="lefti d-flex align-items-center">
+                                        <img src="Rupee.png" alt="" class="icons mb-3">
+                                        <p class="lead">100/hr</p>
+                                    </div>
+                                    <div class="right">
+                                        <button class="btn btn-dark rounded-3xl">Book Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </main>
+                    </div>
+                </div>
+
+            </div>
         </div>
+
     </div>
+    </div>
+
+    </div>
+    </div>
+    </div>
+
+
+
 
     </div>
     </div>
