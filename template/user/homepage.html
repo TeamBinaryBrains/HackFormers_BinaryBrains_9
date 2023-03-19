@@ -21,7 +21,7 @@
                     <div class="profile m-2 my-4 rounded-4 d-flex flex-column px-4 py-3">
                         <img class="m-auto" src="/static/assets/profile.png" alt="profile-pic" />
                         <div class="container d-flex align-items-center">
-                            <p class="m-auto lead">John Grave</p>
+                            <p class="m-auto lead">{{request.user.first_name}} {{request.user.last_name}}</p>
                             <a href="#">
                                 <img class="icons" src="/static/assets/Edit.png" alt="edit" />
                             </a>

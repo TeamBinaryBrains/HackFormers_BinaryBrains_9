@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-
+from django.shortcuts import redirect, render
 
 
 def authenticated_user(view_func):
@@ -7,7 +7,8 @@ def authenticated_user(view_func):
         if request.user.is_authenticated:
             return view_func(request, *args, **Kwargs)
         else:
-            return HttpResponse("<h1> UnAuthorized ! </h1>")
+            return redirect("/home")
+            # return HttpResponse("<h1> UnAuthorized ! </h1>")
 
     return wrapper_func
 

@@ -8,8 +8,7 @@ from parking_details.models import *
 
 # Create your views here.
 
-
-def ParkingPlaceDetails(request):
+def AddParkingPlace(request):
 
     if request.method == "POST":
         rd = request.POST
@@ -17,6 +16,21 @@ def ParkingPlaceDetails(request):
 
         ParkingPlace.objects.create(provider=request.user, title=rd['title'], address_line_1=rd['adl1'], address_line_2=rd['adl2'],
                                     city=rd['city'], state=rd['state'], pincode=rd['pincode'], rate_per_hr=rd['rph'])
+
+        parking_places = ParkingPlace.objects.filter(provider=request.user)
+
+        print("parking_places :: ", parking_places)
+
+        data = {
+            "pp": parking_places,
+        }
+
+        return render(request, 'provider/parking_detail.html', data)
+
+    return render(request, 'provider/add_place.html')
+
+
+def ParkingPlaceDetails(request):
 
     parking_places = ParkingPlace.objects.filter(provider=request.user)
 
@@ -108,7 +122,7 @@ def ConfirmBooking(request, pp_id):
         
         pp.in_use = True
         pp.save()
-        
+
         # return HttpResponse(f"Your Booking successful! OTP :: {verify_otp}")
         return render(request, 'user/otp.html', {"verify_otp":verify_otp})
 
@@ -122,7 +136,7 @@ def GetParkingByFilter(request):
         rd = request.POST
         print("rd :: ", rd)
 
-        fpp = ParkingPlace.objects.filter((Q(address_line_1__icontains=rd['street']) | Q(address_line_2__icontains=rd['street'])), state=rd['state'], city=rd['city'])
+        fpp = ParkingPlace.objects.filter((Q(address_line_1__icontains=rd['street']) | Q(address_line_2__icontains=rd['street'])), state__icontains=rd['state'], city__icontains=rd['city'])
         
         print("\nfpp :: ", fpp)
         data = {

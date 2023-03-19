@@ -82,6 +82,10 @@ def testing(request):
     return render(request, "provider/providerHome.html")
 
 
+@unauthenticated_user
+def index(request):
+    return render(request, 'landing.html')
+
 
 @authenticated_user
 def homepage(request):
@@ -112,7 +116,7 @@ def homepage(request):
 
         return render(request, 'provider/providerHome.html', data)
 
-    return render(request, 'test.html')
+    return render(request, 'landing.html')
 
 
 

@@ -14,6 +14,7 @@ urlpatterns = [
     path('confirm_booking/<str:pp_id>', ConfirmBooking, name="ConfirmBooking"),
     path('get_parking/filter', GetParkingByFilter, name="GetParkingByFilter"),
     
+    path('add_place', AddParkingPlace, name="add_place"),
 ]
 
 
