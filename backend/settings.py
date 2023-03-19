@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     # apps
     'accounts',
     'parking_details',
+    'payment',
 ]
 
 MIDDLEWARE = [

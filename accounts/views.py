@@ -87,7 +87,8 @@ def testing(request):
 def homepage(request):
 
     if request.user.user_type == "user":
-        return HttpResponse("<h1> Homepage For User ! </h1>")
+        return render(request, 'user/homepage.html')
+        # return HttpResponse("<h1> Homepage For User ! </h1>")
 
     elif request.user.user_type == "provider":
 
