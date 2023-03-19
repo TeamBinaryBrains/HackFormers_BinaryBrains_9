@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
     <link rel="stylesheet" href="style.css" />
-    <title>Parking Space Details</title>
+    <title>Parking Slot Booking Confirm</title>
 </head>
 
 <body>
@@ -48,61 +48,73 @@
 
             <main>
                 <div class="slot rounded-4 p-4 mt-2">
-                    <div class="mb-3">
-                        <div class="leftside d-flexalign-items-center">
-                            <img class="custom-img mb-1" src="profile.png" alt="edit" />
-                            <p class="mx-2">John Grave</p>
+
+                    <form action="/parking/confirm_booking/{{pp.id}}" method="POST" class=" w-80 row g-3">
+                        
+                        {% csrf_token %}
+
+                        <div class="mb-3">
+                            <div class="leftside d-flexalign-items-center">
+                                <img class="custom-img mb-1" src="/static/assets/profile.png" alt="edit" />
+                                <p class="mx-2">{{pp.provider.first_name}} {{pp.provider.last_name}}</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="imgs d-flex flex-column  mt-2">
-                        <div class="img-grp">
-                            <img class="m-1" src="/parking_space1.png" alt="parking space 1">
-                            <img class="m-1" src="/parking_space2.png" alt="parking space 1">
-                            <img class="m-1" src="/parking_space2.png" alt="parking space 1">
+                        <div class="imgs d-flex flex-column  mt-2">
+                            <div class="img-grp">
+                                {% for img in pp.place_images %}
+                                <img class="m-1 rounded" src="{{img}}" height="120px" width="200px" alt="parking space 1">
+                                {% endfor %}
+                                <!-- <img class="m-1" src="/static/assets/parking_space1.png" alt="parking space 1">
+                                <img class="m-1" src="/static/assets/parking_space2.png" alt="parking space 1">
+                                <img class="m-1" src="/static/assets/parking_space2.png" alt="parking space 1"> -->
+                            </div>
+                            <div class="content m-5">
+                                <p class="p-0 m-0"><b>Address: </b></p>
+                                <p class="p-0">
+                                    {{pp.address_line_1}},
+                                    {{pp.address_line_2}},
+                                    {{pp.city}},
+                                    {{pp.state}},
+                                    {{pp.pincode}}.
+                                </p>
+                            </div>
                         </div>
-                        <div class="content m-5">
-                            <p class="p-0 m-0"><b>Address: </b></p>
-                            <p class="p-0">Street, 209, 50th Cross Rd, 3 Block, Rajajinagar Bangalore, Karnataka, 53080
-                            </p>
-                        </div>
-                    </div>
-                    <form class=" w-80 row g-3">
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control " />
+                                <input type="text" id="vn" name="vn" class="form-control " />
                                 <label class="form-label">Enter Vehicle Number</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control " />
+                                <input type="text" id="vt" name="vt" class="form-control " />
                                 <label class="form-label">Enter Vehicle Type</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control " />
+                                <input type="text" id="st" name="st" class="form-control " />
                                 <label class="form-label">Starting Timing</label>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control " />
+                                <input type="text" id="ad" name="ad" class="form-control " />
                                 <label class="form-label">Approximate Duration</label>
                             </div>
                         </div>
 
+                        <div class="bottom mt-4 d-flex justify-content-between">
+                            <div class="lefti d-flex align-items-center">
+                                <img src="/static/assets/Rupee.png" alt="" class="icons mb-3">
+                                <p class="lead"><b>{{pp.rate_per_hr}} Per Hour</b></p>
+                            </div>
+                            <div class="right">
+                                <button type="submit" class="btn btn-dark rounded-3xl">Confirm Booking</button>
+                            </div>
+                        </div>
                     </form>
 
-                    <div class="bottom mt-4 d-flex justify-content-between">
-                        <div class="lefti d-flex align-items-center">
-                            <img src="Rupee.png" alt="" class="icons mb-3">
-                            <p class="lead">100/hr</p>
-                        </div>
-                        <div class="right">
-                            <button class="btn btn-dark rounded-3xl">Confirm Booking</button>
-                        </div>
-                    </div>
                 </div>
 
             </main>

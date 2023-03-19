@@ -1,5 +1,7 @@
+import random
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from datetime import datetime
 from parking_details.models import *
 
 
@@ -79,6 +81,34 @@ def VerifyAcceptedSlot(request, app_id):
     return redirect("/")
 
 
+def BookSlot(request, pp_id):
+
+    pp = ParkingPlace.objects.filter(id=pp_id).first()
+
+    if pp is not None:
+        data = {
+            "pp": pp,
+        }
+        return render(request, 'user/booking.html', data)
+        
+    return redirect("/payment/")
+
+
+def ConfirmBooking(request, pp_id):
+
+    if request.method == "POST":
+        rd = request.POST
+        print("rd :: ", rd)
+        pp = ParkingPlace.objects.filter(id=pp_id).first()
+        verify_otp = random.randint(10000, 99999)
+        ParkingTrack.objects.create(user=request.user, parking_place=pp, start_time=datetime.now(), rate_per_hr=pp.rate_per_hr,
+                                    approx_duration=rd['ad'], vehicle_type=rd['vt'], vehicle_no=rd['vn'], state="requested",
+                                    verify_otp=verify_otp)
+        
+        return HttpResponse(f"Your Booking successful! OTP :: {verify_otp}")
+        # return render(request, 'user/')
+
+    return redirect("/")
 
 
 

@@ -87,7 +87,12 @@ def testing(request):
 def homepage(request):
 
     if request.user.user_type == "user":
-        return render(request, 'user/homepage.html')
+        pp = ParkingPlace.objects.filter(is_active=True, in_use=False)
+        data = {
+            "pp": pp,
+        }
+        
+        return render(request, 'user/homepage.html', data)
         # return HttpResponse("<h1> Homepage For User ! </h1>")
 
     elif request.user.user_type == "provider":

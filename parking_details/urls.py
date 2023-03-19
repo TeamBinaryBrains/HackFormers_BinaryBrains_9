@@ -10,6 +10,8 @@ urlpatterns = [
     path('details', ParkingPlaceDetails, name="ParkingPlaceDetails"),
     path('details/modify/<str:pp_id>/<str:action>', ModifyParkingPlace, name="ModifyParkingPlace"),
     path('places/image_upload', upload_media, name="upload_media"),
+    path('book_slot/<str:pp_id>', BookSlot, name="BookSlot"),
+    path('confirm_booking/<str:pp_id>', ConfirmBooking, name="BookSlot"),
     
 ]
 
